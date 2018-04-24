@@ -522,7 +522,7 @@ VLIB_PLUGIN_REGISTER () = {
 void output (int unit, u8 *p, int len)
 {
   pppox_main_t * pom = &pppox_main;
-  vlib_main_t * vm = pom->vlib_main;
+  vlib_main_t * vm = vlib_get_main();
   vnet_main_t * vnm = pom->vnet_main;
   vlib_buffer_t * b;
   u32 bi;
@@ -536,6 +536,7 @@ void output (int unit, u8 *p, int len)
     // PPPoE client might be deleted, simple return.
     return;
   }
+
   hw = vnet_get_hw_interface (vnm, t->hw_if_index);
   // TODO: should we should use packet template to prevent allocate buffer????
   if (vlib_buffer_alloc (vm, &bi, 1) != 1) {
