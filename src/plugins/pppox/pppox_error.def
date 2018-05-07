@@ -1,0 +1,5 @@
+/*
+ * Copyright (c) 2017 RaydoNetworks.
+ */
+pppox_error (TOTAL_RX_CTRL_PKTS, "total control packets for pppox")
+pppox_error (TOTAL_TX_PKTS, "total tx packets for pppox")

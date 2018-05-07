@@ -129,6 +129,7 @@ _ (0x4023, reftek)				\
 _ (0x4025, fibre_channel)			\
 _ (0x4027, emit)				\
 _ (0x405b, vendor_specific_b)			\
+_ (0x8021, ipcp)				\
 _ (0xc021, lcp)					\
 _ (0xc023, pap)					\
 _ (0xc025, link_quality_report)			\

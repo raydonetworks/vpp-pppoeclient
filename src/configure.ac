@@ -188,7 +188,11 @@ PLUGIN_ENABLED(ioam)
 PLUGIN_ENABLED(ixge)
 PLUGIN_ENABLED(lb)
 PLUGIN_ENABLED(memif)
-PLUGIN_ENABLED(pppoe)
+# Disabled for ethernet type collision between pppoe and pppoeclient
+# plugin.
+PLUGIN_DISABLED(pppoe)
+PLUGIN_ENABLED(pppox)
+PLUGIN_ENABLED(pppoeclient)
 PLUGIN_ENABLED(sixrd)
 PLUGIN_ENABLED(nat)
 
@@ -343,5 +347,3 @@ m4_foreach([x], m4_dquote(list_of_plugins), [
   AC_MSG_RESULT(AC_HELP_STRING(x, m4_join([], [${enable_], x, [_plugin}])))
 ])
 AC_MSG_RESULT([==============================================================================])
-
-

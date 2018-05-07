@@ -70,6 +70,14 @@ if ENABLE_PPPOE_PLUGIN
 include pppoe.am
 endif
 
+if ENABLE_PPPOX_PLUGIN
+include pppox.am
+endif
+
+if ENABLE_PPPOECLIENT_PLUGIN
+include pppoeclient.am
+endif
+
 if ENABLE_SIXRD_PLUGIN
 include sixrd.am
 endif

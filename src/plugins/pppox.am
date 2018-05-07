@@ -1,0 +1,50 @@
+# Copyright (c) 2017 RaydoNetworks.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+vppapitestplugins_LTLIBRARIES += pppox_test_plugin.la
+vppplugins_LTLIBRARIES += pppox_plugin.la
+
+pppox_plugin_la_SOURCES = \
+    pppox/pppd/options.c \
+    pppox/pppd/utils.c \
+    pppox/pppd/auth.c \
+    pppox/pppd/fsm.c \
+    pppox/pppd/ipcp.c \
+    pppox/pppd/lcp.c \
+    pppox/pppd/ccp.c \
+    pppox/pppd/ecp.c \
+    pppox/pppd/chap-md5.c \
+    pppox/pppd/chap-new.c \
+    pppox/pppd/md5.c \
+    pppox/pppd/magic.c \
+    pppox/pppd/sys-vpp.c \
+    pppox/pppd/upap.c \
+    pppox/pppox.c \
+    pppox/pppox_api.c \
+    pppox/cli.c \
+    pppox/node.c
+
+BUILT_SOURCES += \
+    pppox/pppox.api.h \
+    pppox/pppox.api.json
+
+API_FILES += pppox/pppox.api
+
+nobase_apiinclude_HEADERS += \
+    pppox/pppox_all_api.h.h \
+    pppox/pppox_msg_enum.h \
+    pppox/pppox.api.h
+
+pppox_test_plugin_la_SOURCES =
+
+# vi:syntax=automake

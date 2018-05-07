@@ -1,0 +1,32 @@
+# Copyright (c) 2017 RaydoNetworks.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+vppplugins_LTLIBRARIES += pppoeclient_plugin.la
+
+pppoeclient_plugin_la_SOURCES =	\
+    pppoeclient/pppoeclient.c		\
+    pppoeclient/pppoeclient_api.c       \
+    pppoeclient/node.c
+
+BUILT_SOURCES +=		\
+    pppoeclient/pppoeclient.api.h		\
+    pppoeclient/pppoeclient.api.json
+
+API_FILES += pppoeclient/pppoeclient.api
+
+nobase_apiinclude_HEADERS +=	\
+    pppoeclient/pppoeclient_all_api_h.h	\
+    pppoeclient/pppoeclient_msg_enum.h	\
+    pppoeclient/pppoeclient.api.h
+
+# vi:syntax=automake

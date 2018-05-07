@@ -291,6 +291,12 @@ typedef struct
       u32 flags;
     } snat;
 
+    /* PPPOX */
+    struct
+    {
+      u16 len;
+    } pppox;
+
     u32 unused[6];
   };
 } vnet_buffer_opaque_t;
