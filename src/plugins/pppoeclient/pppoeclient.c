@@ -575,7 +575,7 @@ pppoe_client_close_session (u32 client_index)
       send_pppoe_pkt (pem, c, PPPOE_PADT, c->session_id, 0 /* is_broadcast */);
       c->session_id = 0;
     }
- 
+
   return;
 }
 
@@ -659,7 +659,7 @@ vnet_pppoe_add_del_client (vnet_pppoe_add_del_client_args_t * a,
 	  {
 	    c->hw_output_next_index = edge;
 	  }
-	  
+
 
       }
 #if 0 // let pppox decide.
@@ -686,12 +686,9 @@ vnet_pppoe_add_del_client (vnet_pppoe_add_del_client_args_t * a,
 	pppox_free_interface_func = vlib_get_plugin_symbol("pppox_plugin.so", "pppox_free_interface");
       }
       (*pppox_free_interface_func)(c->pppox_hw_if_index);
-      
 
-      result.fields.client_index = ~0;
-      pppoeclient_update_1 (&pem->client_table,
-                            a->sw_if_index, a->host_uniq,
-                            &result);
+      pppoeclient_delete_1 (&pem->client_table,
+                            a->sw_if_index, a->host_uniq);
 
       pem->client_index_by_pppox_sw_if_index[c->pppox_sw_if_index] = ~0;
 

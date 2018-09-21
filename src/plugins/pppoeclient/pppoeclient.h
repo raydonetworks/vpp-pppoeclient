@@ -314,6 +314,22 @@ pppoeclient_update_1 (BVT (clib_bihash) * client_table,
 
 }
 
+static_always_inline void
+pppoeclient_delete_1 (BVT (clib_bihash) * client_table,
+                      u32 sw_if_index,
+                      u32 host_uniq)
+{
+  pppoe_client_key_t key0;
+  /* set up key */
+  key0.raw = pppoeclient_make_key (sw_if_index, host_uniq);
+
+  /* Update the entry */
+  BVT (clib_bihash_kv) kv;
+
+  kv.key = key0.raw;
+  BV (clib_bihash_add_del) (client_table, &kv, 0 /* is_add */ );
+}
+
 always_inline u64
 pppoeclient_make_session_key (u16 session_id)
 {
