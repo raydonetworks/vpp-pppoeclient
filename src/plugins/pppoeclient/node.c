@@ -679,7 +679,7 @@ pppoeclient_session_output (vlib_main_t * vm,
           pppoe0->ver_type = PPPOE_VER_TYPE;
           pppoe0->code = PPPOE_SESSION_DATA;
           pppoe0->session_id = clib_host_to_net_u16(c0->session_id);
-          pppoe0->length = clib_host_to_net_u16(b0->current_length);
+          pppoe0->length = clib_host_to_net_u16(b0->current_length - sizeof (pppoe_header_t));
           vlib_buffer_advance (b0, -sizeof (ethernet_header_t));
           h0 = vlib_buffer_get_current (b0);
           h0->type = clib_host_to_net_u16 (ETHERNET_TYPE_PPPOE_SESSION);
@@ -751,7 +751,7 @@ pppoeclient_session_output (vlib_main_t * vm,
           pppoe1->ver_type = PPPOE_VER_TYPE;
           pppoe1->code = PPPOE_SESSION_DATA;
           pppoe1->session_id = clib_host_to_net_u16(c1->session_id);
-          pppoe1->length = clib_host_to_net_u16(b1->current_length);
+          pppoe1->length = clib_host_to_net_u16(b1->current_length - sizeof (pppoe_header_t));
           vlib_buffer_advance (b1, -sizeof (ethernet_header_t));
           h1 = vlib_buffer_get_current (b1);
           h1->type = clib_host_to_net_u16 (ETHERNET_TYPE_PPPOE_SESSION);
@@ -853,7 +853,7 @@ pppoeclient_session_output (vlib_main_t * vm,
           pppoe0->ver_type = PPPOE_VER_TYPE;
           pppoe0->code = PPPOE_SESSION_DATA;
           pppoe0->session_id = clib_host_to_net_u16(c0->session_id);
-          pppoe0->length = clib_host_to_net_u16(b0->current_length);
+          pppoe0->length = clib_host_to_net_u16(b0->current_length - sizeof (pppoe_header_t));
           vlib_buffer_advance (b0, -sizeof (ethernet_header_t));
           h0 = vlib_buffer_get_current (b0);
           h0->type = clib_host_to_net_u16 (ETHERNET_TYPE_PPPOE_SESSION);
